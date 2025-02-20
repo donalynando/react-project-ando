@@ -1,0 +1,96 @@
+/* Overall background */
+body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Calculator container */
+  .calculator {
+    background-color: #2c3e50;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+  }
+  
+  /* Display screen */
+  .display {
+    margin-bottom: 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 20px;
+    font-size: 24px;
+    text-align: right;
+    background-color: #ecf0f1;
+    border: 2px solid #bdc3c7;
+    border-radius: 5px;
+    color: #2c3e50;
+    font-weight: bold;
+    box-sizing: border-box;
+  }
+  
+  /* Buttons container */
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  /* Button styles */
+  button {
+    padding: 20px;
+    font-size: 20px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  button:active {
+    background-color: #1c5980;
+  }
+  
+  /* Special button (Clear, Equal) */
+  button:active,
+  button:nth-child(16),
+  button:nth-child(15) {
+    background-color: #e74c3c;
+  }
+  
+  button:nth-child(16):hover,
+  button:nth-child(15):hover {
+    background-color: #c0392b;
+  }
+  
+  /* For button C */
+  button:nth-child(16) {
+    grid-column: span 2;
+  }
+  
+  /* Button layout: making the C button span two columns */
+  button:nth-child(15) {
+    background-color: #e67e22;
+    grid-column: span 2;
+  }
+  
+  button:nth-child(15):hover {
+    background-color: #d35400;
+  }
+  
+  

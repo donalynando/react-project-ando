@@ -1,61 +1,58 @@
+// src/Calculator.jsx
+import { useState } from 'react';
 
+const Calculator = () => {
+  const [input, setInput] = useState('');
 
-function App() {
-  const [num1, setNum1] = useState("");
-  const [num2, setNum2] = useState("");
-  const [result, setResult] = useState(null);
+  // Function to handle button click
+  const handleClick = (value) => {
+    setInput(input + value);
+  };
 
-  const calculate = (operator) => {
-    const n1 = parseFloat(num1);
-    const n2 = parseFloat(num2);
-
-    if (isNaN(n1) || isNaN(n2)) {
-      setResult("Please enter valid numbers");
-      return;
-    }
-
-    switch (operator) {
-      case "+":
-        setResult(n1 + n2);
-        break;
-      case "-":
-        setResult(n1 - n2);
-        break;
-      case "*":
-        setResult(n1 * n2);
-        break;
-      case "/":
-        setResult(n2 !== 0 ? n1 / n2 : "Cannot divide by zero");
-        break;
-      default:
-        setResult("Error");
+  // Function to calculate the result
+  const handleCalculate = () => {
+    try {
+      setInput(eval(input).toString());
+    } catch (error) {
+      setInput('Error');
     }
   };
 
+  // Function to clear the input
+  const handleClear = () => {
+    setInput('');
+  };
+
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Simple Calculator</h1>
-      <input
-        type="number"
-        placeholder="Enter first number"
-        value={num1}
-        onChange={(e) => setNum1(e.target.value)}
-        style={{ marginRight: "10px" }}
-      />
-      <input
-        type="number"
-        placeholder="Enter second number"
-        value={num2}
-        onChange={(e) => setNum2(e.target.value)}
-      />
-      <br /><br />
-      <button onClick={() => calculate("+")}>➕</button>
-      <button onClick={() => calculate("-")}>➖</button>
-      <button onClick={() => calculate("*")}>✖</button>
-      <button onClick={() => calculate("/")}>➗</button>
-      <h2>Result: {result}</h2>
+    <div className="calculator">
+      <div className="display">
+        <input type="text" value={input} readOnly />
+      </div>
+      <div className="buttons">
+        <button onClick={() => handleClick('1')}>1</button>
+        <button onClick={() => handleClick('2')}>2</button>
+        <button onClick={() => handleClick('3')}>3</button>
+        <button onClick={() => handleClick('+')}>+</button>
+
+        <button onClick={() => handleClick('4')}>4</button>
+        <button onClick={() => handleClick('5')}>5</button>
+        <button onClick={() => handleClick('6')}>6</button>
+        <button onClick={() => handleClick('-')}>-</button>
+
+        <button onClick={() => handleClick('7')}>7</button>
+        <button onClick={() => handleClick('8')}>8</button>
+        <button onClick={() => handleClick('9')}>9</button>
+        <button onClick={() => handleClick('*')}>*</button>
+
+        <button onClick={() => handleClick('0')}>0</button>
+        <button onClick={() => handleClick('.')}>.</button>
+        <button onClick={handleCalculate}>=</button>
+        <button onClick={() => handleClick('/')}>/</button>
+
+        <button onClick={handleClear}>C</button>
+      </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Calculator;
